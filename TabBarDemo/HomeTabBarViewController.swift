@@ -15,7 +15,7 @@ class HomeTabBarViewController: UITabBarController {
         let userVc = UserViewController()
         userVc.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         userVc.title = "Users"
-        userVc.view.backgroundColor = UIColor.orange
+        userVc.view.backgroundColor = .white
         
         let galleryVc = GalleryViewController()
         galleryVc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
