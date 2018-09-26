@@ -13,6 +13,8 @@
 		84071675215BF7B00024F14B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84071674215BF7B00024F14B /* UserTableViewCell.swift */; };
 		84071678215BFE060024F14B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84071677215BFE060024F14B /* User.swift */; };
 		8407167A215BFFA90024F14B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84071679215BFFA90024F14B /* Extensions.swift */; };
+		8407167E215C076D0024F14B /* UserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407167D215C076C0024F14B /* UserListPresenter.swift */; };
+		84071681215C07C70024F14B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84071680215C07C70024F14B /* Protocol.swift */; };
 		844CCCB6215B62CC008B51BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CCCB5215B62CC008B51BA /* AppDelegate.swift */; };
 		844CCCB8215B62CC008B51BA /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CCCB7215B62CC008B51BA /* UserViewController.swift */; };
 		844CCCBD215B62CE008B51BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844CCCBC215B62CE008B51BA /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		84071674215BF7B00024F14B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		84071677215BFE060024F14B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84071679215BFFA90024F14B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8407167D215C076C0024F14B /* UserListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenter.swift; sourceTree = "<group>"; };
+		84071680215C07C70024F14B /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		844CCCB2215B62CC008B51BA /* TabBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844CCCB5215B62CC008B51BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844CCCB7215B62CC008B51BA /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		84071672215BF7920024F14B /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				8407167F215C07B70024F14B /* Protocols */,
+				8407167C215C075B0024F14B /* Presenter */,
 				84071676215BFDF90024F14B /* Entity */,
 				84071673215BF7990024F14B /* View */,
 			);
@@ -141,6 +147,22 @@
 				84071679215BFFA90024F14B /* Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8407167C215C075B0024F14B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8407167D215C076C0024F14B /* UserListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8407167F215C07B70024F14B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				84071680215C07C70024F14B /* Protocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		844CCCA9215B62CC008B51BA = {
@@ -369,12 +391,14 @@
 				"${PODS_ROOT}/Target Support Files/Pods-TabBarDemo/Pods-TabBarDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844CCCE4215B65EA008B51BA /* GalleryViewController.swift in Sources */,
+				8407167E215C076D0024F14B /* UserListPresenter.swift in Sources */,
 				844CCCE6215B6615008B51BA /* HomeTabBarViewController.swift in Sources */,
 				844CCCB8215B62CC008B51BA /* UserViewController.swift in Sources */,
 				8407167A215BFFA90024F14B /* Extensions.swift in Sources */,
@@ -433,6 +458,7 @@
 				84071675215BF7B00024F14B /* UserTableViewCell.swift in Sources */,
 				844CCCE8215B6632008B51BA /* InfoViewController.swift in Sources */,
 				84071678215BFE060024F14B /* User.swift in Sources */,
+				84071681215C07C70024F14B /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

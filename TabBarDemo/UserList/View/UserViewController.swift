@@ -8,7 +8,7 @@
 
 import UIKit
 import Moya
-//import PKHUD
+import PKHUD
 
 class UserViewController: UITableViewController {
     
@@ -17,10 +17,11 @@ class UserViewController: UITableViewController {
     let user3 = User(id: 2,title: "Web Developer")
     let user4 = User(id: 3,title: "Backend Developer")
     let user5 = User(id: 4,title: "Tester")
-
+    
     var userList: [User] = []
     let cellIdentifier = "userTableViewCell"
-    
+    var presenter: UserListPresenterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -34,7 +35,7 @@ class UserViewController: UITableViewController {
     }
     
     fileprivate func setupTableView(){
-        self.navigationItem.title = "Comments"
+        self.navigationItem.title = "Users"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 246, green: 246, blue: 246)
         self.navigationController?.navigationBar.titleTextAttributes   = [NSAttributedStringKey.foregroundColor: UIColor.black]
@@ -51,25 +52,25 @@ class UserViewController: UITableViewController {
     
 }
 
-//extension PostListView: PostListViewProtocol {
-//
-//    func showPosts(with posts: [PostModel]) {
-//        postList = posts
-//        tableView.reloadData()
-//    }
-//
-//    func showError() {
-//        HUD.flash(.label("Internet not connected"), delay: 2.0)
-//    }
-//
-//    func showLoading() {
-//        HUD.show(.progress)
-//    }
-//
-//    func hideLoading() {
-//        HUD.hide()
-//    }
-//}
+extension UserViewController: UserListViewProtocol {
+
+    func showPosts(with posts: [PostModel]) {
+        postList = posts
+        tableView.reloadData()
+    }
+
+    func showError() {
+        HUD.flash(.label("Internet not connected"), delay: 2.0)
+    }
+
+    func showLoading() {
+        HUD.show(.progress)
+    }
+
+    func hideLoading() {
+        HUD.hide()
+    }
+}
 
 extension UserViewController {
     
@@ -88,9 +89,8 @@ extension UserViewController {
         return userList.count
     }
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        presenter?.showPostDetail(forPost: postList[indexPath.row])
-    //    }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.showUserDetail(forPost: userList[indexPath.row])
+    }
 }
 
