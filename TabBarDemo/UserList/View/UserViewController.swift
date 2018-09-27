@@ -19,10 +19,8 @@ class UserViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        debugPrint("presenter value,presenter",presenter)
         presenter?.viewDidLoad()
         tableView.tableFooterView = UIView()
-
     }
     
     fileprivate func setupTableView(){
@@ -30,17 +28,14 @@ class UserViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 246, green: 246, blue: 246)
         self.navigationController?.navigationBar.titleTextAttributes   = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        /**
+         *MARK:- Tableview Setup and Configuration
+         */
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
         tableView.allowsSelection = false
     }
-    
 }
 
 extension UserViewController: UserListViewProtocol {
