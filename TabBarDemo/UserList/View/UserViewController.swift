@@ -12,10 +12,14 @@ import PKHUD
 
 class UserViewController: UITableViewController {
     
-    var userList: [User] = []
+    var userList: [Int: User] = [:]
     let cellIdentifier = "userTableViewCell"
     var presenter: UserListPresenterProtocol?
-
+    var dictionaryKeys: Array<Int> {
+        get{
+            return userList.keys.sorted()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -39,7 +43,7 @@ class UserViewController: UITableViewController {
 }
 
 extension UserViewController: UserListViewProtocol {
-    func showUsers(with users: [User]) {
+    func showUsers(with users: [Int: User]) {
         userList = users
         debugPrint("UserViewController UserListViewProtocol",users.count)
         tableView.reloadData()
@@ -64,9 +68,10 @@ extension UserViewController {
         
         let cell: UserTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
         
-        let user = userList[indexPath.row]
-        cell.set(forUser: user)
-        
+        let keyValue = dictionaryKeys[indexPath.row]
+        if let user  = userList[keyValue]{
+            cell.set(forUser: user)
+        }
         return cell
     }
     
@@ -76,7 +81,10 @@ extension UserViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.showUserDetail(forUser: userList[indexPath.row])
+        let keyValue = dictionaryKeys[indexPath.row]
+        if let user  = userList[keyValue]{
+            presenter?.showUserDetail(forUser: user)
+        }
     }
 }
 
