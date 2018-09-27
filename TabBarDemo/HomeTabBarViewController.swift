@@ -12,7 +12,7 @@ class HomeTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userVc = UserViewController()
+        let userVc = UserListWireFrame.createUserListModule()
         userVc.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         userVc.title = "Users"
         userVc.view.backgroundColor = .white
