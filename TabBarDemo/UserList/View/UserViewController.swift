@@ -8,7 +8,6 @@
 
 import UIKit
 import Moya
-import PKHUD
 
 class UserViewController: UITableViewController {
     
@@ -36,9 +35,9 @@ class UserViewController: UITableViewController {
          *MARK:- Tableview Setup and Configuration
          */
         tableView.register(UserTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
     }
 }
 
@@ -49,15 +48,15 @@ extension UserViewController: UserListViewProtocol {
     }
 
     func showError() {
-//        HUD.flash(.label("Currently, Unavailable Please Try Again"), delay: 2.0)
+        //Show Error Loader
     }
 
     func showLoading() {
-//        HUD.show(.progress)
+        //Show Loader
     }
 
     func hideLoading() {
-//        HUD.hide()
+        //Hide Loader
     }
 }
 
@@ -78,7 +77,6 @@ extension UserViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        debugPrint("User List",userList.count)
         return userList.count
     }
     

@@ -51,7 +51,7 @@ protocol UserListInteractorOutputProtocol: class {
 protocol UserListWireFrameProtocol: class {
     static func createUserListModule() -> UIViewController
     // PRESENTER -> WIREFRAME
-    func presentUserDetailScreen(from view: UserListViewProtocol, forPost post: Array<User>)
+    func presentUserDetailScreen(from view: UserListViewProtocol, forUser users: Array<User>)
 }
 
 protocol UserDataListRemoteDataManagerInputProtocol: class {

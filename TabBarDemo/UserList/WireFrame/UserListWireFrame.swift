@@ -27,8 +27,13 @@ class UserListWireFrame: UserListWireFrameProtocol {
         return view
     }
     
-    func presentUserDetailScreen(from view: UserListViewProtocol, forPost post: Array<User>) {
-        
+    func presentUserDetailScreen(from view: UserListViewProtocol, forUser users: Array<User>) {
+        debugPrint("User List View Wire frame ")
+        let detailVc = UserDetailWireFrame.createUserDetailModule(users: users)
+        if let sourceView = view as? UIViewController {
+            debugPrint("presentUserDetailScreen Inside if let")
+            sourceView.navigationController?.pushViewController(detailVc, animated: true)
+        }
         return
     }
    

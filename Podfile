@@ -7,7 +7,6 @@ target 'TabBarDemo' do
 
   # Pods for TabBarDemo
   pod 'Moya', '~> 11.0'
-  pod 'PKHUD', '~> 5.0'
 
   target 'TabBarDemoTests' do
     inherit! :search_paths

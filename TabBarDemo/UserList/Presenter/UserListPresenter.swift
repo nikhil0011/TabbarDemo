@@ -19,7 +19,8 @@ class UserListPresenter: UserListPresenterProtocol {
     }
     
     func showUserDetail(forUser User: Array<User>) {
-        wireFrame?.presentUserDetailScreen(from: view!, forPost: User)
+        debugPrint("Show User Detial In Presenter")
+        wireFrame?.presentUserDetailScreen(from: view!, forUser: User)
     }    
 }
 
