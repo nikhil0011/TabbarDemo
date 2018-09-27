@@ -57,9 +57,22 @@ extension UserDetailTableViewController {
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectedRowIndex {
-            return 140
+            let index = IndexPath(row: selectedRowIndex, section: 0)
+            let cell: UserDetailTableViewCell = self.tableView.cellForRow(at: index) as! UserDetailTableViewCell
+            cell.body.numberOfLines = 0
+            cell.title.numberOfLines = 0
+
+            let body = cell.body.text!
+            let title = cell.title.text!
+
+            let bodyHeight = body.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 14))
+            let titleHeight = title.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 14))
+            /*
+             *MARK:- 32 is sum of constant value passed UserDetailTableViewCell components
+             */
+            return bodyHeight + titleHeight + 40
         }
-        return 44
+        return 80
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectedRowIndex != indexPath.row {
