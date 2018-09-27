@@ -12,7 +12,8 @@ class UserDetailTableViewController: UITableViewController {
     var dataList =  Array<User>()
     let cellIdentifier = "userDetailTableViewCell"
     var presenter: UserDetailPresenterProtocol?
-    
+    var selectedRowIndex = -1
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -54,8 +55,29 @@ extension UserDetailTableViewController {
         debugPrint("Couunt in Detial PAge",dataList.count)
         return dataList.count
     }
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedRowIndex {
+            return 140
+        }
+        return 44
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectedRowIndex != indexPath.row {
+            
+            // paint the last cell tapped to white again
+            let index = IndexPath(row: selectedRowIndex, section: 0)
+            self.tableView.cellForRow(at: index)?.backgroundColor = UIColor.white
+            
+            // save the selected index
+            self.selectedRowIndex = indexPath.row
+            
+            // paint the selected cell to gray
+            self.tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.rgb(red: 246, green: 246, blue: 246)
+            
+            // update the height for all the cells
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
         return
     }
 }
