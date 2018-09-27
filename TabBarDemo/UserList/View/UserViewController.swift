@@ -12,7 +12,7 @@ import PKHUD
 
 class UserViewController: UITableViewController {
     
-    var userList: [Int: User] = [:]
+    var userList = Dictionary<Int, Array<User>>()
     let cellIdentifier = "userTableViewCell"
     var presenter: UserListPresenterProtocol?
     var dictionaryKeys: Array<Int> {
@@ -43,9 +43,8 @@ class UserViewController: UITableViewController {
 }
 
 extension UserViewController: UserListViewProtocol {
-    func showUsers(with users: [Int: User]) {
+    func showUsers(with users: Dictionary<Int, Array<User>>) {
         userList = users
-        debugPrint("UserViewController UserListViewProtocol",users.count)
         tableView.reloadData()
     }
 
@@ -70,7 +69,10 @@ extension UserViewController {
         
         let keyValue = dictionaryKeys[indexPath.row]
         if let user  = userList[keyValue]{
-            cell.set(forUser: user)
+            /*
+             *MARK:- (user.first) As all elements in array shares same userId value
+             */
+            cell.set(forUser: user.first!)
         }
         return cell
     }
