@@ -7,6 +7,7 @@ target 'TabBarDemo' do
 
   # Pods for TabBarDemo
   pod 'Moya', '~> 11.0'
+  pod 'AlamofireImage'
 
   target 'TabBarDemoTests' do
     inherit! :search_paths

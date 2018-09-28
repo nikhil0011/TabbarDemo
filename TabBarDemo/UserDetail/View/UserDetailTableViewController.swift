@@ -76,7 +76,6 @@ extension UserDetailTableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectedRowIndex != indexPath.row {
-            
             // paint the last cell tapped to white again
             let index = IndexPath(row: selectedRowIndex, section: 0)
             self.tableView.cellForRow(at: index)?.backgroundColor = UIColor.white
