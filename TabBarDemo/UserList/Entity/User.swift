@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import ObjectMapper
 
 struct User : Codable {
     var id: Int

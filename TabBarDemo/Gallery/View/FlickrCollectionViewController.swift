@@ -11,7 +11,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class FlickrCollectionViewController: UICollectionViewController {
-
+    var presenter: FlickrGridPresenterProtocol?
+    var flickrPosts = Array<Post>()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,8 @@ class FlickrCollectionViewController: UICollectionViewController {
         self.navigationController?.navigationBar.titleTextAttributes   = [NSAttributedStringKey.foregroundColor: UIColor.black]
 
         self.collectionView!.register(FlickrCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        presenter?.viewDidLoad()
+
 
         // Do any additional setup after loading the view.
     }
@@ -45,18 +48,37 @@ class FlickrCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return flickrPosts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FlickrCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrCollectionViewCell
-        cell.set(forPost: "https://farm1.staticflickr.com/1929/30032754797_ce8393111d.jpg")
+        let itemAtRow = flickrPosts[indexPath.row]
+        let url = "https://farm1.staticflickr.com/\(itemAtRow.server)" + "/" + "\(itemAtRow.id)_\(itemAtRow.secret).jpg"
+        debugPrint("Url of image",url)
+        cell.set(forPost: url)
         return cell
     }
-
-
-
 }
+extension FlickrCollectionViewController: FlickrGridViewProtocol {
+    func showPosts(with posts: Array<Post>) {
+        flickrPosts = posts
+        collectionView?.reloadData()
+    }
+    
+    func showError() {
+        //Show Error Loader
+    }
+    
+    func showLoading() {
+        //Show Loader
+    }
+    
+    func hideLoading() {
+        //Hide Loader
+    }
+}
+
 extension FlickrCollectionViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
