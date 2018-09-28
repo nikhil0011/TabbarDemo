@@ -55,7 +55,6 @@ class FlickrCollectionViewController: UICollectionViewController {
         let cell: FlickrCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrCollectionViewCell
         let itemAtRow = flickrPosts[indexPath.row]
         let url = "https://farm1.staticflickr.com/\(itemAtRow.server)" + "/" + "\(itemAtRow.id)_\(itemAtRow.secret).jpg"
-        debugPrint("Url of image",url)
         cell.set(forPost: url)
         return cell
     }

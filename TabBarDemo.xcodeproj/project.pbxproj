@@ -178,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				84071677215BFE060024F14B /* User.swift */,
-				84A9102C215D4CEC00589217 /* CodeableResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -341,6 +340,7 @@
 		846F0681215EB96600BB9B3D /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				84A9102C215D4CEC00589217 /* CodeableResponse.swift */,
 				846F0682215EB97E00BB9B3D /* FlickrPostRemoteDataManager.swift */,
 				846F0684215EB99500BB9B3D /* FlickrNetworkManager.swift */,
 			);

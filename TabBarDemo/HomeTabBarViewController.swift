@@ -17,7 +17,7 @@ class HomeTabBarViewController: UITabBarController {
         userVc.title = "Users"
         userVc.view.backgroundColor = .white
         
-        let galleryVc = FlickrCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let galleryVc = FlickrWireFrame.createFlickrGridModule()
         galleryVc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         galleryVc.title = "Gallery"
         galleryVc.view.backgroundColor = .blue

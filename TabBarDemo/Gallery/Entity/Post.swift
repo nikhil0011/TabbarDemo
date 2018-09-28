@@ -9,7 +9,7 @@
 import Foundation
 
 struct Post : Codable {
-    var id: Int
+    var id: String
     var secret: String
     var server: String
     var title: String

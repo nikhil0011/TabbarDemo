@@ -14,13 +14,12 @@ class FlickrPostsRemoteDataManager:FlickDataGridRemoteDataManagerInputProtocol {
 
     func retrievePostsDataList() {
         let provider = MoyaProvider<FlickrNetworkManager>()
-        let flickrPosts = Array<Post>()
+        var flickrPosts = Array<Post>()
         provider.request(.flickrPosts) { [weak self] result in
             switch result {
             case .success(let response):
                 do {
-                    print(try response.mapJSON())
-                    //                    FlickrPosts = try response.map(Array<User>.self);
+                    flickrPosts = try response.map(FlickrResponse<Post>.self).photos.photo
                     self?.remoteRequestHandler?.onPostsDataRetrieved(flickrPosts)
                 } catch {
                     print("Error info: \(error)")
