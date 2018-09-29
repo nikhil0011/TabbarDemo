@@ -38,27 +38,8 @@ class FlickrCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return flickrPosts.count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FlickrCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrCollectionViewCell
-        let itemAtRow = flickrPosts[indexPath.row]
-        let url = "https://farm1.staticflickr.com/\(itemAtRow.server)" + "/" + "\(itemAtRow.id)_\(itemAtRow.secret).jpg"
-        cell.set(forPost: url)
-        return cell
-    }
 }
+
 extension FlickrCollectionViewController: FlickrGridViewProtocol {
     func showPosts(with posts: Array<Post>) {
         flickrPosts = posts
@@ -84,5 +65,34 @@ extension FlickrCollectionViewController: UICollectionViewDelegateFlowLayout{
         let padding: CGFloat =  16
         let collectionViewSize = collectionView.frame.size.width - padding
         return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
+    }
+}
+
+extension FlickrCollectionViewController{
+    // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return flickrPosts.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: FlickrCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrCollectionViewCell
+        let itemAtRow = flickrPosts[indexPath.row]
+        let url = "https://farm1.staticflickr.com/\(itemAtRow.server)" + "/" + "\(itemAtRow.id)_\(itemAtRow.secret).jpg"
+        cell.set(forPost: url)
+        return cell
+    }
+    
+   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = indexPath.row
+        let post = flickrPosts[row]
+        presenter?.showPostDetail(forPost: post)
     }
 }

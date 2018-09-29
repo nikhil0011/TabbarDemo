@@ -9,13 +9,14 @@
 import UIKit
 
 class FlickrWireFrame: FlickrGridWireFrameProtocol {
+    
     func presentPostDetailScreen(from view: FlickrGridViewProtocol, forPost post: Post) {
         debugPrint("User List View Wire frame ")
-//        let detailVc = UserDetailWireFrame.createUserDetailModule(users: users)
-//        if let sourceView = view as? UIViewController {
-//            debugPrint("presentUserDetailScreen Inside if let")
-//            sourceView.navigationController?.pushViewController(detailVc, animated: true)
-//        }
+        let detailVc = FlickrExpandImageWireFrame.createFlickrExpandImageModule(posts: post)
+        if let sourceView = view as? UIViewController {
+            debugPrint("presentUserDetailScreen Inside if let")
+            sourceView.navigationController?.pushViewController(detailVc, animated: true)
+        }
     }
     
     static func createFlickrGridModule() -> UIViewController {

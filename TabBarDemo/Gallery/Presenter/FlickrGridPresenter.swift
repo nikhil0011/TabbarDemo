@@ -20,7 +20,7 @@ class FlickrGridPresenter: FlickrGridPresenterProtocol {
     
     func showPostDetail(forPost post: Post) {
         debugPrint("Show User Detial In Presenter")
-//        wireFrame?.presentUserDetailScreen(from: view!, forUser: post)
+        wireFrame?.presentPostDetailScreen(from: view!, forPost: post)
     }
 }
 
