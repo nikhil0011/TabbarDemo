@@ -10,24 +10,24 @@ import UIKit
 
 class ProjectOverviewWireFrame: ProjectOverviewWireFrameProtocol {
     static func createProjectOverviewModule() -> UIViewController {
-        debugPrint("ProjectOverviewWireFrame")
         let view = ProjectOverviewTableViewController()
-        let presenter: ProjectOverviewPresenterProtocol = ProjectOverviewPresenter()
+        let presenter: ProjectOverviewPresenterProtocol & ProjectOverviewInteractorOutputProtocol = ProjectOverviewPresenter()
         let wireFrame: ProjectOverviewWireFrameProtocol = ProjectOverviewWireFrame()
         
+        let interactor: ProjectOverviewInteractorInputProtocol & ProjectDataOverviewLocalDataManagerOutputProtocol = ProjectOverviewInteractor()
+        let remoteDataManager: ProjectDataOverviewLocalDataManagerInputProtocol = ProjectOverviewLocalDataManager()
+
         view.presenter = presenter
-        presenter.topicsData = returnTopicsData()
+        presenter.topicsData = [Topics]()
         presenter.view = view
         presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        interactor.remoteDatamanager = remoteDataManager
+        remoteDataManager.remoteRequestHandler = interactor
+
         return view
     }
     
-    fileprivate static func returnTopicsData() -> Array<Topics>{
-        var topics = Array<Topics>()
-        topics.append(Topics(title: "Moya", description: "The Networking Library The Networking LibraryThe Networking LibraryThe Networking LibraryThe Networking Library"))
-        topics.append(Topics(title: "Alamofire Image", description: "Load and Cache Image Asynchronously In app"))
-        topics.append(Topics(title: "VIPER", description: "Code Distribution Intrnal Project Architechture"))
-        topics.append(Topics(title: "Codeable and Decodable", description: "To Parse JOSN Response in App"))
-        return topics
-    }
+    
 }

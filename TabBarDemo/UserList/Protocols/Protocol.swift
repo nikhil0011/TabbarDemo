@@ -33,9 +33,15 @@ protocol UserListViewProtocol: class {
     func hideLoading()
 }
 
+protocol UserListWireFrameProtocol: class {
+    static func createUserListModule() -> UIViewController
+    // PRESENTER -> WIREFRAME
+    func presentUserDetailScreen(from view: UserListViewProtocol, forUser users: Array<User>)
+}
+
 protocol UserListInteractorInputProtocol: class {
-        var presenter: UserListInteractorOutputProtocol? { get set }
-        var remoteDatamanager: UserDataListRemoteDataManagerInputProtocol? { get set }
+    var presenter: UserListInteractorOutputProtocol? { get set }
+    var remoteDatamanager: UserDataListRemoteDataManagerInputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
     func retrieveUserList()
@@ -48,19 +54,12 @@ protocol UserListInteractorOutputProtocol: class {
     func onError()
 }
 
-protocol UserListWireFrameProtocol: class {
-    static func createUserListModule() -> UIViewController
-    // PRESENTER -> WIREFRAME
-    func presentUserDetailScreen(from view: UserListViewProtocol, forUser users: Array<User>)
-}
-
 protocol UserDataListRemoteDataManagerInputProtocol: class {
     var remoteRequestHandler: UserDataListRemoteDataManagerOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
     func retrieveUserDataList()
 }
-
 
 protocol UserDataListRemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> INTERACTOR

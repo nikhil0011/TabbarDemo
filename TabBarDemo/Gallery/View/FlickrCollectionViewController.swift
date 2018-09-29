@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class FlickrCollectionViewController: UICollectionViewController {
     var presenter: FlickrGridPresenterProtocol?
     var flickrPosts = Array<Post>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -127,6 +128,7 @@ extension FlickrCollectionViewController: FlickrGridViewProtocol {
     }
     
     func showLoading() {
+        
         //Show Loader
     }
     

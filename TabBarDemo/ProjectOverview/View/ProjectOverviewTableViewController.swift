@@ -42,6 +42,7 @@ class ProjectOverviewTableViewController: UITableViewController {
 
 extension ProjectOverviewTableViewController: ProjectOverviewViewProtocol{
     func showTopics(with topics: Array<Topics>) {
+        debugPrint("Project Over view Reloaded")
         dataList = topics
         self.tableView.reloadData()
     }

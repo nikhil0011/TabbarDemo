@@ -43,6 +43,8 @@
 		84B936AC215F7A2B00588DFB /* ProjectOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B936AB215F7A2B00588DFB /* ProjectOverviewPresenter.swift */; };
 		84B936AF215F7AEC00588DFB /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B936AE215F7AEC00588DFB /* Topics.swift */; };
 		84B936B1215F7C4C00588DFB /* ProjectOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B936B0215F7C4C00588DFB /* ProjectOverviewTableViewCell.swift */; };
+		84B936B5215FD45900588DFB /* ProjectOverviewLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B936B4215FD45900588DFB /* ProjectOverviewLocalDataManager.swift */; };
+		84B936B9215FD69900588DFB /* ProjectOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B936B8215FD69900588DFB /* ProjectOverviewInteractor.swift */; };
 		84FDFC2F215D641000EE3D0F /* UserDetailWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDFC2E215D641000EE3D0F /* UserDetailWireFrame.swift */; };
 		84FDFC32215D643900EE3D0F /* UserDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDFC31215D643900EE3D0F /* UserDetailProtocol.swift */; };
 		84FDFC35215D688500EE3D0F /* UserDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDFC34215D688500EE3D0F /* UserDetailTableViewController.swift */; };
@@ -113,6 +115,8 @@
 		84B936AB215F7A2B00588DFB /* ProjectOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectOverviewPresenter.swift; sourceTree = "<group>"; };
 		84B936AE215F7AEC00588DFB /* Topics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
 		84B936B0215F7C4C00588DFB /* ProjectOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectOverviewTableViewCell.swift; sourceTree = "<group>"; };
+		84B936B4215FD45900588DFB /* ProjectOverviewLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectOverviewLocalDataManager.swift; sourceTree = "<group>"; };
+		84B936B8215FD69900588DFB /* ProjectOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectOverviewInteractor.swift; sourceTree = "<group>"; };
 		84FDFC2E215D641000EE3D0F /* UserDetailWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWireFrame.swift; sourceTree = "<group>"; };
 		84FDFC31215D643900EE3D0F /* UserDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailProtocol.swift; sourceTree = "<group>"; };
 		84FDFC34215D688500EE3D0F /* UserDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 		84B936A0215F79B600588DFB /* ProjectOverview */ = {
 			isa = PBXGroup;
 			children = (
+				84B936B7215FD66E00588DFB /* Interactor */,
+				84B936B2215FD43B00588DFB /* DataManager */,
 				84B936AD215F7ADD00588DFB /* Entity */,
 				84B936A4215F79E600588DFB /* View */,
 				84B936A3215F79DD00588DFB /* Protocol */,
@@ -419,6 +425,30 @@
 				84B936AE215F7AEC00588DFB /* Topics.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		84B936B2215FD43B00588DFB /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				84B936B3215FD44900588DFB /* Local */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		84B936B3215FD44900588DFB /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				84B936B4215FD45900588DFB /* ProjectOverviewLocalDataManager.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		84B936B7215FD66E00588DFB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				84B936B8215FD69900588DFB /* ProjectOverviewInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		84FDFC2C215D62DD00EE3D0F /* UserDetail */ = {
@@ -738,6 +768,7 @@
 				844CCCE8215B6632008B51BA /* InfoViewController.swift in Sources */,
 				84071678215BFE060024F14B /* User.swift in Sources */,
 				846F067F215EB7B300BB9B3D /* Post.swift in Sources */,
+				84B936B5215FD45900588DFB /* ProjectOverviewLocalDataManager.swift in Sources */,
 				84071688215C1B340024F14B /* UserListRemoteDataManager.swift in Sources */,
 				84071681215C07C70024F14B /* Protocol.swift in Sources */,
 				846F0685215EB99500BB9B3D /* FlickrNetworkManager.swift in Sources */,
@@ -751,6 +782,7 @@
 				84A9102D215D4CEC00589217 /* CodeableResponse.swift in Sources */,
 				84B936A8215F7A0B00588DFB /* ProjectOverviewProtocols.swift in Sources */,
 				8433802B215E75E900F4F505 /* FlickrCollectionViewCell.swift in Sources */,
+				84B936B9215FD69900588DFB /* ProjectOverviewInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

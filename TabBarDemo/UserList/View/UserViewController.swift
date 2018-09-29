@@ -19,11 +19,15 @@ class UserViewController: UITableViewController {
             return userList.keys.sorted()
         }
     }
+    var indicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupIndicator()
         presenter?.viewDidLoad()
         tableView.tableFooterView = UIView()
+        
     }
     
     fileprivate func setupTableView(){
@@ -39,6 +43,21 @@ class UserViewController: UITableViewController {
         tableView.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
         tableView.allowsSelection = true
     }
+    
+    fileprivate func setupIndicator(){
+        self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        self.indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        self.indicator.center = view.center
+        self.view.addSubview(self.indicator)
+        self.view.bringSubview(toFront: self.indicator)
+    }
+    fileprivate func showLoader(){
+        self.indicator.startAnimating()
+    }
+    fileprivate func hideLoader(){
+        self.indicator.stopAnimating()
+    }
+
 }
 
 extension UserViewController: UserListViewProtocol {
@@ -48,14 +67,17 @@ extension UserViewController: UserListViewProtocol {
     }
 
     func showError() {
+        self.hideLoader()
         //Show Error Loader
     }
 
     func showLoading() {
+        self.showLoader()
         //Show Loader
     }
 
     func hideLoading() {
+        self.hideLoader()
         //Hide Loader
     }
 }
