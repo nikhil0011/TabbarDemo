@@ -35,6 +35,9 @@ class FlickExpandImageViewController: UIViewController {
         NSLayoutConstraint.activate(constraint)
         
         self.navigationItem.title = "ZoomImageView"
+        self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 246, green: 246, blue: 246)
+        self.navigationController?.navigationBar.titleTextAttributes   = [NSAttributedStringKey.foregroundColor: UIColor.black]
+
         view.backgroundColor = .white
         animateImageview()
     }
