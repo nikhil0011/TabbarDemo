@@ -9,9 +9,9 @@
 import Foundation
 import Moya
 
+
 public enum FlickrNetworkManager {
-    static private let api_key = "8820f7fd0959d6819a098db723785cea"
-    static private let api_sig = "b355fc727351a0e81d30c58922081896"
+    static private let api_key = "e449b259146e14b0d55e770fb3577436"
     static private let api_method = "flickr.photos.getRecent"
     case flickrPosts
 }
@@ -39,12 +39,11 @@ extension FlickrNetworkManager: TargetType {
          */
         return Data()
     }
-    
     public var task: Task {
         switch self {
         case .flickrPosts:
             return .requestParameters(parameters:
-                ["method": FlickrNetworkManager.api_method,"api_key": FlickrNetworkManager.api_key,"format":"json","nojsoncallback":"1","api_sig": FlickrNetworkManager.api_sig],encoding: URLEncoding.default)
+                ["method": FlickrNetworkManager.api_method,"api_key": FlickrNetworkManager.api_key,"format":"json","nojsoncallback":"1"],encoding: URLEncoding.default)
         }
     }
     

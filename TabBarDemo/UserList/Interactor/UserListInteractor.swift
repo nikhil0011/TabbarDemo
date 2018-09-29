@@ -31,9 +31,9 @@ extension UserListInteractor: UserDataListRemoteDataManagerOutputProtocol {
             let filter = users.filter{$0.userId == user.userId}
             userDict[user.userId] = filter
         }
-        
-        debugPrint("userDict.count",userDict.count)
-        debugPrint("userDict",userDict)
+//        
+//        debugPrint("userDict.count",userDict.count)
+//        debugPrint("userDict",userDict)
         return userDict
     }
     
