@@ -12,48 +12,30 @@ import AlamofireImage
 class FlickExpandImageViewController: UIViewController {
     var presenter: FlickrExpandImagePresenterProtocol?
     
-    let selectedImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode  = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        return imageView
-    }()
+    let selectedImage = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        setupView()
+        
         // Do any additional setup after loading the view.
     }
     
     func setupView(){
-        self.view.addSubview(selectedImage)
-        let constraint = [
-            selectedImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            selectedImage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ]
-        NSLayoutConstraint.activate(constraint)
-        
         self.navigationItem.title = "ZoomImageView"
         self.navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 246, green: 246, blue: 246)
         self.navigationController?.navigationBar.titleTextAttributes   = [NSAttributedStringKey.foregroundColor: UIColor.black]
-
-        view.backgroundColor = .white
-        animateImageview()
+        view.backgroundColor = .black
+        
+        selectedImage.contentMode  = .scaleAspectFill
+        selectedImage.layer.masksToBounds = true
+        selectedImage.isUserInteractionEnabled = true
+        selectedImage.clipsToBounds = true
+        let y = self.view.frame.height / 2 - self.selectedImage.frame.height
+        selectedImage.frame = CGRect(x: 0 , y: y, width: self.view.frame.width, height: 300)
+        self.view.addSubview(selectedImage)
     }
     
-    @objc func animateImageview(){
-        
-        let newHeight = self.selectedImage.frame.width * self.view.frame.height / self.view.frame.width
-        //        let newHeight = (self.selectedImage.frame.width  / self.view.frame.width) * self.view.frame.height
-        let y = self.view.frame.height / 2 - self.selectedImage.frame.height
-        UIView.animate(withDuration: 02, animations: {
-            self.selectedImage.frame = CGRect(x: 100, y: 900, width: self.view.frame.width, height: newHeight)
-            //            self.selectedImage.backgroundColor = .yellow
-            self.selectedImage.alpha = 0.6
-        })
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,5 +50,8 @@ extension FlickExpandImageViewController: FlickrExpandImageViewProtocol{
         let imageUrl = URL(string: url)!
         let placeholderImage = UIImage(named: "placeholder")!
         selectedImage.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
+        DispatchQueue.main.async{
+            self.setupView()
+        }
     }
 }

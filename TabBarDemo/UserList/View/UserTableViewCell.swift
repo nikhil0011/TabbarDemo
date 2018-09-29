@@ -13,6 +13,7 @@ class UserTableViewCell: UITableViewCell {
     let userName: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,4 +43,4 @@ class UserTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         userName.text = "User Name: \(user.userId)"
     }
-}
+}   
