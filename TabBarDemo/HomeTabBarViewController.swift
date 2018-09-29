@@ -20,12 +20,12 @@ class HomeTabBarViewController: UITabBarController {
         let galleryVc = FlickrWireFrame.createFlickrGridModule()
         galleryVc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         galleryVc.title = "Gallery"
-        galleryVc.view.backgroundColor = .blue
+        galleryVc.view.backgroundColor = .white
         
-        let infoVc = InfoViewController()
+        let infoVc = ProjectOverviewWireFrame.createProjectOverviewModule()
         infoVc.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
         infoVc.title = "Info"
-        infoVc.view.backgroundColor = .red
+        infoVc.view.backgroundColor = .white
         
         let tabBarList = [userVc, galleryVc,infoVc]
         

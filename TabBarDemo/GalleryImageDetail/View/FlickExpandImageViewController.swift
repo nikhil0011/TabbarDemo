@@ -11,6 +11,7 @@ import AlamofireImage
 
 class FlickExpandImageViewController: UIViewController {
     var presenter: FlickrExpandImagePresenterProtocol?
+    
     let selectedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
