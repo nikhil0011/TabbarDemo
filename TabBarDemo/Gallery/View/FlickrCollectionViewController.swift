@@ -41,7 +41,8 @@ class FlickrCollectionViewController: UICollectionViewController {
     let blackBackground = UIView()
     var cellImageView = UIImageView()
     let navbarCoverView = UIView()
-    
+    let tabbarCoverView = UIView()
+
     func animateImageView(imageView: UIImageView){
         self.tempImageview = imageView
         
@@ -66,6 +67,13 @@ class FlickrCollectionViewController: UICollectionViewController {
          */
         if let keywindow = UIApplication.shared.keyWindow{
             keywindow.addSubview(navbarCoverView)
+//            let heightOfTabbar = self.tabBarItem.accessibilityFrame.height
+            let heightOfTabbar = 49.0
+
+            tabbarCoverView.frame = CGRect(x: 0, y: keywindow.frame.height - 49 , width: keywindow.frame.width, height: 49)
+            tabbarCoverView.backgroundColor = .black
+            tabbarCoverView.alpha = 0
+            keywindow.addSubview(tabbarCoverView)
         }
         
         if let startFrame = imageView.superview?.convert(imageView.frame, to: nil){
@@ -80,25 +88,28 @@ class FlickrCollectionViewController: UICollectionViewController {
             
             let newHeight = self.view.frame.width * startFrame.height / self.view.frame.width
             let y = self.view.frame.height / 2 - newHeight/2
-            UIView.animate(withDuration: 0.75, animations: {
+            
+            UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseOut, animations: {
                 self.cellImageView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: newHeight)
                 self.blackBackground.alpha = 1
                 self.navbarCoverView.alpha = 1
-            })
+                self.tabbarCoverView.alpha = 1
+            }, completion: nil)
         }
     }
     
     @objc fileprivate func zoomOutImageview(){
-        debugPrint("Zoomed out")
         if let startFrame = tempImageview?.superview?.convert((tempImageview?.frame)!, to: nil){
             UIView.animate(withDuration: 0.75, animations: {
                 self.cellImageView.frame = startFrame
                 self.blackBackground.alpha = 0
                 self.navbarCoverView.alpha = 0
+                self.tabbarCoverView.alpha = 0
             }, completion: {(didComplete) -> Void in
                 self.cellImageView.removeFromSuperview()
                 self.blackBackground.removeFromSuperview()
                 self.navbarCoverView.removeFromSuperview()
+                self.tabbarCoverView.removeFromSuperview()
                 self.tempImageview?.alpha = 1
             })
             }

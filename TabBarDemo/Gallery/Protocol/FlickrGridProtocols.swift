@@ -16,7 +16,6 @@ protocol FlickrGridPresenterProtocol: class {
     
     // VIEW -> PRESENTER
     func viewDidLoad()
-    func showPostDetail(forPost post: Post)
 }
 
 
@@ -51,7 +50,6 @@ protocol FlickrGridInteractorOutputProtocol: class {
 protocol FlickrGridWireFrameProtocol: class {
     static func createFlickrGridModule() -> UIViewController
     // PRESENTER -> WIREFRAME
-    func presentPostDetailScreen(from view: FlickrGridViewProtocol, forPost post: Post)
 }
 
 protocol FlickDataGridRemoteDataManagerInputProtocol: class {

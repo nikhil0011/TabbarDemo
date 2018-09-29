@@ -18,10 +18,6 @@ class FlickrGridPresenter: FlickrGridPresenterProtocol {
         interactor?.retrievePostsList()
     }
     
-    func showPostDetail(forPost post: Post) {
-        debugPrint("Show User Detial In Presenter")
-        wireFrame?.presentPostDetailScreen(from: view!, forPost: post)
-    }
 }
 
 extension FlickrGridPresenter: FlickrGridInteractorOutputProtocol {
